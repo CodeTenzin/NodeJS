@@ -1,3 +1,5 @@
+// 12 - Handling HTTP PUT Requests
+
 const Joi = require("joi");
 const express = require("express");
 const app = express();
@@ -20,15 +22,25 @@ app.get("/api/courses", (req, res) => {
 
 app.get("/api/courses/:id", (req, res) => {
   const course = courses.find((c) => c.id === parseInt(req.params.id));
-  if (!course)
-    return res.status(404).send("The course with the given ID not found");
+  if (!course) res.status(404).send("The course with the given ID not found");
   res.send(course);
 });
 
 app.post("/api/courses", (req, res) => {
+  // const schema = {
+  //   name: Joi.string(),
+  // };
+  // const result = Joi.validate(req.body, schema);
+  // console.log(result);
+
   const { error } = validateCourse(req.body);
 
-  if (error) return res.status(400).send(error.details[0].message);
+  // if (result.error) {
+  if (error) {
+    // res.status(400).send(result.error.details[0].message);
+    res.status(400).send(error.details[0].message);
+    return;
+  }
 
   const course = {
     id: courses.length + 1,
@@ -38,40 +50,43 @@ app.post("/api/courses", (req, res) => {
   res.send(course);
 });
 
+// Update resouces
 app.put("/api/courses/:id", (req, res) => {
+  // Part 1
+  // Look up course
+  // if not existing, return 404, resource not found.
+
+  // Part 2
+  // Validate
+  // If invalid, return 400 - Bad request
+
+  // Part 3
+  // Update course
+  // Return the updated course
   const course = courses.find((c) => c.id === parseInt(req.params.id));
-  if (!course) {
-    // Added return
-    return res.status(404).send("The course with the given ID not found");
-  }
+  if (!course) res.status(404).send("The course with the given ID not found");
+
+  // const result = validateCourse(req.body);
   const { error } = validateCourse(req.body);
+
+  // if (result.error) {
   if (error) {
-    return res.status(400).send(error.details[0].message);
+    res.status(400).send(error.details[0].message);
+    return;
   }
+
   courses.name = req.body.name;
   res.send(course);
 });
 
+// Added. code duplication.
 function validateCourse(course) {
   const schema = {
     name: Joi.string().min(3).required(),
   };
+  // const result = Joi.validate(req.body, schema);
   return Joi.validate(course, schema);
 }
-
-// Added
-app.delete("/api/courses/:id", (req, res) => {
-  //Look up course
-  //Not exist, return 404.
-  // Delete
-  // Return  the same course.
-  const course = courses.find((c) => c.id === parseInt(req.params.id));
-  if (!course)
-    return res.status(404).send("The course with the given ID not found");
-  const index = courses.indexOf(course);
-  courses.splice(index, 1); // deleting
-  res.send(course);
-});
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
@@ -79,7 +94,8 @@ app.listen(port, () => {
 });
 
 // POSTMAN
-// DELETE http://localhost:9000/api/courses/1
+// PUT http://localhost:9000/api/courses/1
+// BODY  {"name:" "new course"}
 
 // new postman tab
 // GET http://localhost:9000/api/courses

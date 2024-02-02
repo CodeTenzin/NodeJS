@@ -1,13 +1,11 @@
-// 8 - Handling HTTP GET Requests
-
-/*
-implementing end point to get a single course from the server
-
-*/
+// 9 - Handling HTTP POST Requests
 
 const express = require("express");
-const { toInteger } = require("lodash");
 const app = express();
+
+// Added for enable parsing of JSON objects in body of req.
+// added a middleware.
+app.use(express.json());
 
 const courses = [
   { id: 1, name: "course1" },
@@ -25,9 +23,20 @@ app.get("/api/courses", (req, res) => {
 
 app.get("/api/courses/:id", (req, res) => {
   const course = courses.find((c) => c.id === parseInt(req.params.id));
-  //return 404. object not found
   if (!course) res.status(404).send("The course with the given ID not found");
-  // chrome dev tools -> network -> refresh.
+  res.send(course);
+});
+
+// creating new course. courses to get the list
+app.post("/api/courses", (req, res) => {
+  const course = {
+    id: courses.length + 1,
+    // assuming in req body has an object with name property.
+    // need to enable parsing of JSON objects in body of req.
+    // by default not enabled in express.
+    name: req.body.name,
+  };
+  courses.push(course);
   res.send(course);
 });
 
