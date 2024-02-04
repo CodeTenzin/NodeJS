@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 
 mongoose
   .connect("mongodb://localhost/playground")
-
   .then(() => console.log("Connected to MongoDB..."))
   .catch((err) => console.error("Could not connect to MongoDB...", err));
 
@@ -30,17 +29,11 @@ async function updateCourse(id) {
   console.log(course);
 }
 
-// Removing
 async function removeCourse(id) {
-  // takes a filter or query object.
   const result = await Course.deleteOne({
     _id: id,
   });
-  // Delete multiple doc
-  // .deleteMany
-  // Get the deleted doc
-  //  const course = await Course.findByIdAndDelete(id);
-  // returns null if the given course does not exist.
+
   console.log(result);
 }
 
