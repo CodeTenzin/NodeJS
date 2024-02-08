@@ -33,7 +33,6 @@ function displayCommits(commits) {
 function getUser(id, callback) {
   setTimeout(() => {
     console.log("Reading a user from database...");
-
     callback({ id: id, gitHubUsername: "Jay" });
   }, 2000);
 }

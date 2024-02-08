@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 
 app.get("/api/courses", (req, res) => {
   // get list of courses from db.
-  // focus here is no endpoint.
+  // focus here is on endpoint.
   res.send([1, 2, 3]);
 });
 

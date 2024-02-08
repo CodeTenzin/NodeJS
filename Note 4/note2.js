@@ -7,7 +7,7 @@ Server - back end
 
 using HTTP protocol to connect.
 REST - Representational State Transfer.
-converntion for building HTTP services.
+convention for building HTTP services.
 
 CRUD operations
 Create, Read, Update and Delete data.

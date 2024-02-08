@@ -33,7 +33,7 @@ app.post("/api/courses", (req, res) => {
     id: courses.length + 1,
     // assuming in req body has an object with name property.
     // need to enable parsing of JSON objects in body of req.
-    // by default not enabled in express.
+    // by default not enabled in express. code above.
     name: req.body.name,
   };
   courses.push(course);

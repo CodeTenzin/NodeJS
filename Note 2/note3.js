@@ -12,7 +12,7 @@ function log(message) {
 // and setting it to the log function.
 module.exports.log = log;
 
-// module.exports.newName = url;
+// module.exports.objectName = url;
 
 // module.exports = log;
 // now no longer returns an object when

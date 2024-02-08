@@ -9,7 +9,6 @@ const http = require("node:http");
 const server = http.createServer((req, res) => {
   // need more more if blocks for more path.
   // framwork gives proper structure while keeping code miantianable.
-  // Exo
   if (req.url === "/") {
     res.write("Hello World");
     res.end();

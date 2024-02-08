@@ -1,7 +1,7 @@
 // 9 - Templating Engines
 
 /*
-so far enppoints returned a json object
+so far endpoints returned a json object
 sometimes want a html markup. templating engine.
 
 Eg:

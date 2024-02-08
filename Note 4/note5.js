@@ -8,5 +8,5 @@ npm i -g nodemon
 sudo npm i -g nodemon
 nodemon index.js    <-- replaced from node to nodemon. 
                         nodemon watches all the files in current folder.
-
-                        */
+                       
+*/

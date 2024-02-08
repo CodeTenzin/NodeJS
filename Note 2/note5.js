@@ -3,8 +3,8 @@
 // 6 - Module Wrapper Function
 console.log("Hello");
 
-// node does not execute our code directly. it always wraps out code
-// insdie a function like:
+// node does not execute our code directly. it always wraps our code
+// inside a function like:
 // (function (exports, require, module, __filename, __dirname)) { ... }
 // these func like require here are not actually global but
 // passed in each module.

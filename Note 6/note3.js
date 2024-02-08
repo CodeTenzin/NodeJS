@@ -11,7 +11,7 @@ getUser(1, (user) => {
 });
 console.log("After");
 
-// callback. a func to be called when the reuslt of async operation is ready.
+// callback. a func to be called when the result of async operation is ready.
 // function getUser(id) {
 function getUser(id, callback) {
   setTimeout(() => {

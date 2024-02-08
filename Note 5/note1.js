@@ -1,5 +1,5 @@
 /*
-Mioddleware
+Middleware
 Configuration
 Debugging
 Templating Engines

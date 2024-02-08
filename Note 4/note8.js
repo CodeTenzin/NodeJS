@@ -6,7 +6,6 @@ implementing end point to get a single course from the server
 */
 
 const express = require("express");
-const { toInteger } = require("lodash");
 const app = express();
 
 const courses = [

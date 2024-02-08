@@ -7,7 +7,7 @@ checking all the meta data and dependencies of a library
 npm view mongoose
 show package.json file of mongoose library.
 
-only inrerested on the dependecies.
+only interested on the dependecies.
 npm view mongoose dependencies
 
 history of the versions.
